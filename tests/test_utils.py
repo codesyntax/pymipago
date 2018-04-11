@@ -11,6 +11,7 @@ from pymipago.utils import _build_payment_code_notebook_60
 from pymipago.utils import _calculate_payment_identification_notebook_60
 from pymipago.utils import _calculate_reference_number_with_control_digits_notebook_60
 from pymipago.utils import _parse_initialization_response
+from pymipago.exceptions import InvalidReferenceNumber
 
 class TestUtils(unittest.TestCase):
     """Tests for `utils` package."""
@@ -71,6 +72,17 @@ class TestUtils(unittest.TestCase):
         )
         self.assertEqual(value, calculated_value)
 
+
+    def test_calculate_reference_number_with_invalid_reference_number(self):
+        sender = '123456'
+        reference_number = '1234567890132132'
+        payment_identification = '123456879012'
+        quantity = '1200'
+
+        with self.assertRaises(InvalidReferenceNumber):
+            _ = _calculate_reference_number_with_control_digits_notebook_60(
+                sender, reference_number, payment_identification, quantity
+            )
 
     def test_build_payment_code_notebook_60(self):
         """ Payment code is calculated concatenating 6 values:
