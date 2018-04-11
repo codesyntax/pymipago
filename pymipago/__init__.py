@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-from .utils import _calculate_payment_identification_notebook_60
-from .utils import _calculate_reference_number_with_control_digits_notebook_60
-from .utils import _build_payment_code_notebook_60
-from .utils import _parse_initialization_response
 from .constants import INITIALIZATION_XML_NOTEBOOK_60
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
+from .exceptions import InvalidFormatValue
 from .exceptions import InvalidRegistration
+from .utils import _build_payment_code_notebook_60
+from .utils import _calculate_payment_identification_notebook_60
+from .utils import _calculate_reference_number_with_control_digits_notebook_60
+from .utils import _parse_initialization_response
 
 
 import os
@@ -16,7 +17,6 @@ import requests
 if os.environ.get('DEBUG', False):
     from .constants import TEST_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
     from .constants import TEST_ENVIRON_SERVICE_URL as SERVICE_URL
-
 else:
     from .constants import PROD_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
     from .constants import PROD_ENVIRON_SERVICE_URL as SERVICE_URL
@@ -48,6 +48,9 @@ def make_payment_request(
 
     if cpr != '9052180':
         raise InvalidCPRValue('We only accept payments with CPR 9052180')
+
+    if format != '521':
+        raise InvalidFormatValue('We only accept payments with Format 521')
 
     payment_identification = _calculate_payment_identification_notebook_60(
         payment_limit_date, suffix
