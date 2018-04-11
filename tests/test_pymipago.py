@@ -23,7 +23,7 @@ class TestPymipago(unittest.TestCase):
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
-        pass
+        del os.environ['DEBUG']
 
     def test_invalid_cpr_raises_exception(self):
         cpr = '010101'
