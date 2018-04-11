@@ -8,47 +8,39 @@ from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
 from .exceptions import InvalidRegistration
-from .exceptions import InvalidReferenceNumber
 
 
 import os
 import requests
 
 if os.environ.get('DEBUG', False):
-    from .constants import TEST_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL
+    from .constants import TEST_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
     from .constants import TEST_ENVIRON_SERVICE_URL as SERVICE_URL
 
 else:
-    from .constants import PROD_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL
+    from .constants import PROD_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
     from .constants import PROD_ENVIRON_SERVICE_URL as SERVICE_URL
 
 
-
-
-
 def make_payment_request(
-    cpr,
-    sender,
-    format,
-    suffix,
-    reference_number,
-    payment_limit_date,
-    quantity,
-    language,
-    return_url,
+    cpr, sender, format, suffix,
+    reference_number, payment_limit_date, quantity, language, return_url,
     payment_modes=['01', '02']):
 
-    """This method creates an XML file and creates a payment request on the Government platform
-       in order to have the basis to be shown to the end user.
+    """This method creates an XML file and creates a payment request on the
+       Government platform in order to have the basis to be shown to the end
+       user.
 
-       According to the payment platform specs, after the registration, an HTML file is created
-       which must be shown to the user. This HTML file has an "auto-refresh" feature which allows to
-       redirect the user to the payment platform, where all the data of the payment is already
-       entered.
+       According to the payment platform specs, after the registration, an HTML
+       file is created which must be shown to the user. This HTML file has an
+       "auto-refresh" feature which allows to redirect the user to the payment
+       platform, where all the data of the payment is already entered.
 
-       There, the enduser only has to select the bank of his choice to complete the payment.
+       There, the enduser only has to select the bank of his choice to complete
+       the payment.
 
-       After completing the payment the user will be redirected to the `return_url`.
+       After completing the payment the user will be redirected to the
+       `return_url`.
 
        See the documentation for more information about the parameters
 
@@ -57,9 +49,11 @@ def make_payment_request(
     if cpr != '9052180':
         raise InvalidCPRValue('We only accept payments with CPR 9052180')
 
-    payment_identification = _calculate_payment_identification_notebook_60(payment_limit_date, suffix)
+    payment_identification = _calculate_payment_identification_notebook_60(
+        payment_limit_date, suffix
+    )
 
-    reference_number_with_control_digits = _calculate_reference_number_with_control_digits_notebook_60(
+    reference_number_with_control_digits = _calculate_reference_number_with_control_digits_notebook_60( # noqa
         sender,
         reference_number,
         payment_identification,
@@ -82,14 +76,17 @@ def make_payment_request(
 
     )
 
-    response = requests.post(INITIALIZATION_URL, data={'xmlRPC': initialization_xml})
+    response = requests.post(
+        INITIALIZATION_URL,
+        data={'xmlRPC': initialization_xml}
+    )
 
-    registered_payment_id, error = _parse_initialization_response(response.content)
+    registered_payment_id, error = _parse_initialization_response(response.content) # noqa
 
     if registered_payment_id is not None:
         payment_mode_string = ''
         for payment_mode in payment_modes:
-            payment_mode_string += "<paymentMode oid='{}'/>".format(payment_mode)
+            payment_mode_string += "<paymentMode oid='{}'/>".format(payment_mode) # noqa
 
         presentation_request_data = PRESENTATION_XML.format(
             language=language,
@@ -109,6 +106,3 @@ def make_payment_request(
         return response.content
 
     raise InvalidRegistration(error)
-
-
-

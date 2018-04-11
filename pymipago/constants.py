@@ -1,10 +1,12 @@
-TEST_ENVIRON_INITIALIZATION_URL = 'https://www.testpago.euskadi.eus/p12gWar/p12gRPCDispatcherServlet'
+# -*- coding: utf-8 -*-
 
-TEST_ENVIRON_SERVICE_URL = 'https://www.testpago.euskadi.eus/p12iWar/p12iRPCDispatcherServlet'
+TEST_ENVIRON_INITIALIZATION_URL = 'https://www.testpago.euskadi.eus/p12gWar/p12gRPCDispatcherServlet' # noqa
 
-PROD_ENVIRON_INITIALIZATION_URL = 'https://www.euskadi.eus/p12gWar/p12gRPCDispatcherServlet'
+TEST_ENVIRON_SERVICE_URL = 'https://www.testpago.euskadi.eus/p12iWar/p12iRPCDispatcherServlet' # noqa
 
-PROD_ENVIRON_SERVICE_URL = 'https://www.euskadi.eus/p12iWar/p12iRPCDispatcherServlet'
+PROD_ENVIRON_INITIALIZATION_URL = 'https://www.euskadi.eus/p12gWar/p12gRPCDispatcherServlet' # noqa
+
+PROD_ENVIRON_SERVICE_URL = 'https://www.euskadi.eus/p12iWar/p12iRPCDispatcherServlet' # noqa
 
 INITIALIZATION_XML_NOTEBOOK_60 = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
 <rpcCall module="rpcCoreDaemon">
