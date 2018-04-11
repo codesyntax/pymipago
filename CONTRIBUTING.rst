@@ -119,10 +119,10 @@ Deploying
 
 A reminder for the maintainers on how to deploy.
 Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
+Then run `fullrelease` a command from `zest.releaser`_ which will help you creating
+a new version number, tagging it on git and bumpin the version number::
 
-$ bumpversion patch # possible: major / minor / patch
-$ git push
-$ git push --tags
+$ fullrelease
 
+.. _`zest.releaser`: https://pypi.org/project/zest.releaser
 
