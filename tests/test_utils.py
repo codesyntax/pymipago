@@ -3,15 +3,16 @@
 
 """Tests for `pymipago` package."""
 
-import datetime
-import os
-import unittest
 
+from xml.etree.ElementTree import ParseError
 from pymipago.utils import _build_payment_code_notebook_60
 from pymipago.utils import _calculate_payment_identification_notebook_60
 from pymipago.utils import _calculate_reference_number_with_control_digits_notebook_60
 from pymipago.utils import _parse_initialization_response
 from pymipago.exceptions import InvalidReferenceNumber
+
+import datetime
+import unittest
 
 class TestUtils(unittest.TestCase):
     """Tests for `utils` package."""
@@ -109,5 +110,30 @@ class TestUtils(unittest.TestCase):
         calculated_value = _build_payment_code_notebook_60(sender, reference_number, payment_identification, quantity)
         self.assertEqual(value, calculated_value)
 
-    def test_parse_initialization_response(self):
-        pass
+    def test_parse_initialization_response_invalid_xml(self):
+        xmlvalue = ''
+        with self.assertRaises(ParseError):
+            _, _ = _parse_initialization_response(xmlvalue)
+
+    def test_parse_initialization_response_when_payment_is_incorrect(self):
+        payment_id = None
+        error = '''<?xml version='1.0' encoding='ISO-8859-1'?><rpcCallResult><dataType code='16'>java.lang.reflect.InvocationTargetException</dataType><returnValue>java.lang.reflect.InvocationTargetException</returnValue></rpcCallResult>'''
+
+        xmlvalue = '''<?xml version='1.0' encoding='ISO-8859-1'?><rpcCallResult><dataType code='16'>java.lang.reflect.InvocationTargetException</dataType><returnValue>java.lang.reflect.InvocationTargetException</returnValue></rpcCallResult>'''.format(payment_id=error)
+
+        calculated_payment_id, calculated_error = _parse_initialization_response(xmlvalue)
+
+        self.assertEqual(payment_id, calculated_payment_id)
+        self.assertEqual(error, calculated_error)
+
+
+    def test_parse_initialization_response_when_payment_is_correct(self):
+        payment_id = ''
+        error = None
+        xmlvalue = '''<?xml version='1.0' encoding='ISO-8859-1'?><rpcCallResult><dataType code='3'>java.lang.String</dataType><returnValue><paymentRequestData><peticionesPago><peticionPago id='{payment_id}'><imagenes><imagen id='logoEmisor'><url><![CDATA[]]></url></imagen></imagenes><descripcion><eu>Reserva de instalaciones deportivas</eu><es>Reserva de instalaciones deportivas</es></descripcion><domiciliacion><permitir>false</permitir></domiciliacion><aplicacion codigo='a'><nombre><eu>a</eu><es>a</es></nombre></aplicacion><backend><enabled>false</enabled></backend><datosPago><codigo>{payment_id}</codigo><cpr>9052180</cpr><tipo>002</tipo><periodosPago><periodoPago id='periodoNormal'><importe>1160</importe><validarFechaFin>true</validarFechaFin><identificacion>1002188121</identificacion><fechaFin>010518</fechaFin><activo>false</activo></periodoPago></periodosPago><formato>521</formato><emisor>481166</emisor><validar>1</validar><referencia>123456789017</referencia></datosPago><emisor><codigoPostal></codigoPostal><territorio></territorio><nombre><eu>Amorebieta-Etxano - Ametx organismo aut�nomo eu</eu><es>Amorebieta-Etxano - Ametx organismo aut�nomo</es></nombre><codigo>04800687</codigo><municipio></municipio><cif>Q4800687H</cif><calle></calle></emisor></peticionPago></peticionesPago></paymentRequestData></returnValue></rpcCallResult>
+
+        '''.format(payment_id=payment_id)
+        calculated_payment_id, calculated_error = _parse_initialization_response(xmlvalue)
+
+        self.assertEqual(payment_id, calculated_payment_id)
+        self.assertEqual(error, calculated_error)
