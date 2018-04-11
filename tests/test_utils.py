@@ -32,7 +32,45 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(value, calculated_value)
 
     def test_calculate_reference_number_with_control_digits_notebook_60(self):
-        pass
+        """ Control digits for the reference number are calculated as follows:
+            - a: Multiply the sender value converted to an integer value by 76
+            - b: Multiply the reference value converted to an integer value by 9
+            - c: Sum the payment_identification converted to an integer value and the
+              quantity value converted to an integer value and deduct 1.
+            - d: Multiply the c value by 55.
+            - e: sum a, b and d
+            - Divide e by 97 and take the decimal values.
+            - f: take the first 2 decimal values (add a 0 as a second digit if the division
+              result creates just one decimal)
+            - g: deduct f from 100.
+            - Concatenate the reference number and g and create a 12 digit value
+        """
+
+        sender = '123456'
+        reference_number = '1234567890'
+        payment_identification = '123456879012'
+        quantity = '1200'
+
+        sum_value = 0
+        sum_value += int(sender) * 76
+        sum_value += int(reference_number) * 9
+        sum_value += (int(payment_identification) + int(quantity) - 1) * 55
+
+        division = sum_value / 97.0
+        _, decimals = str(division).split('.')
+        if len(decimals) > 1:
+            first_two_decimals = decimals[:2]
+        else:
+            first_two_decimals = decimals[:1] + '0'
+
+        control_digits = 100 - int(first_two_decimals)
+        value = '{}{}'.format(reference_number, control_digits)
+
+        calculated_value = _calculate_reference_number_with_control_digits_notebook_60(
+            sender, reference_number, payment_identification, quantity
+        )
+        self.assertEqual(value, calculated_value)
+
 
     def test_build_payment_code_notebook_60(self):
         """ Payment code is calculated concatenating 6 values:
