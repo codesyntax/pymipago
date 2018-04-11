@@ -126,6 +126,19 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(payment_id, calculated_payment_id)
         self.assertEqual(error, calculated_error)
 
+    def test_parse_initialization_response_when_payment_validation_fails(self):
+        payment_id = None
+        error = 'La longitud de la referencia no es correcta'
+
+        xmlvalue = '''<?xml version='1.0' encoding='ISO-8859-1'?><rpcCallResult><dataType code='3'>java.lang.String</dataType><returnValue><paymentRequestData><peticionesPago><peticionPago id='0'><domiciliacion><permitir>false</permitir></domiciliacion><validacion><codigoError>referencia_longitud</codigoError><mensajeValidacion><![CDATA[La longitud de la referencia no es correcta]]></mensajeValidacion><valido>false</valido></validacion><backend><enabled>false</enabled></backend><datosPago><codigo>905214811661234567890111111002188121000011600</codigo><cpr>9052180</cpr><tipo>002</tipo><periodosPago><periodoPago id='periodoNormal'><importe>1160</importe><validarFechaFin>true</validarFechaFin><identificacion>1002188121</identificacion><fechaFin>010518</fechaFin><activo>false</activo></periodoPago></periodosPago><formato>521</formato><emisor>481166</emisor><validar>1</validar><referencia>12345678901111186</referencia></datosPago></peticionPago></peticionesPago></paymentRequestData></returnValue></rpcCallResult>
+'''.format(payment_id=error)
+
+        calculated_payment_id, calculated_error = _parse_initialization_response(xmlvalue)
+
+        self.assertEqual(payment_id, calculated_payment_id)
+        self.assertEqual(error, calculated_error)
+
+
 
     def test_parse_initialization_response_when_payment_is_correct(self):
         payment_id = ''
