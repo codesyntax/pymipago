@@ -23,7 +23,8 @@ def _calculate_reference_number_with_control_digits_notebook_60(sender, referenc
     if len(reference_number) != 10:
         raise InvalidReferenceNumber
 
-    total = int(sender)*76 + int(reference_number)*9
+    total = int(sender)*76
+    total += int(reference_number)*9
     total += (int(payment_identification)-1+int(quantity))*55
 
     division_result = total / 97.0
