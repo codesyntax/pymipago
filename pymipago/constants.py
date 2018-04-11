@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+""" includes some constants used by the library"""
+
 
 TEST_ENVIRON_INITIALIZATION_URL = 'https://www.testpago.euskadi.eus/p12gWar/p12gRPCDispatcherServlet' # noqa
 

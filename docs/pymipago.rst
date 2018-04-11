@@ -20,14 +20,6 @@ pymipago.exceptions module
     :undoc-members:
     :show-inheritance:
 
-pymipago.pymipago module
-------------------------
-
-.. automodule:: pymipago.pymipago
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 pymipago.utils module
 ---------------------
 
