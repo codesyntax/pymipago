@@ -50,7 +50,7 @@ def _build_payment_code_notebook_60(sender, reference_number, payment_identifica
 
 def _parse_initialization_response(xmlresponse):
     root = ET.fromstring(xmlresponse)
-    petition = root.find('.//petitionPago')
+    petition = root.find('.//peticionPago')
     if petition:
         pago_id = petition.get('id')
         if petition.find('.//validacion'):
