@@ -1,6 +1,6 @@
-===============================================================================
-Python package to make payment requests with Basque Governament payment service
-===============================================================================
+========
+pymipago
+========
 
 
 .. image:: https://img.shields.io/pypi/v/pymipago.svg

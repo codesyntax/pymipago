@@ -1,5 +1,5 @@
-Welcome to Python package to make payment requests with Basque Governament payment service's documentation!
-======================================
+Welcome to pymipago
+===================
 
 .. toctree::
    :maxdepth: 2
