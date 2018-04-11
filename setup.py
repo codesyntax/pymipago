@@ -11,7 +11,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = [ 'requests' ]
 
 setup_requirements = [ ]
 
@@ -32,7 +32,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
-    description="Python package to make payment requests with Basque Governament payment service",
+    description="Python package to make payment requests with Basque Government payment service",
     install_requires=requirements,
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
@@ -43,7 +43,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/erral/pymipago',
+    url='https://github.com/codesyntax/pymipago',
     version='0.1.0',
     zip_safe=False,
 )
