@@ -38,8 +38,8 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-Python package to make payment requests with Basque Governament payment service could always use more documentation, whether as part of the
-official Python package to make payment requests with Basque Governament payment service docs, in docstrings, or even on the web in blog posts,
+pymipago could always use more documentation, whether as part of the
+official pymipago docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback

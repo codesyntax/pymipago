@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Python package to make payment requests with Basque Governament payment service'
+project = u'pymipago'
 copyright = u"2018, Mikel Larreategi"
 author = u"Mikel Larreategi"
 
@@ -130,7 +130,7 @@ latex_elements = {
 # [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'pymipago.tex',
-     u'Python package to make payment requests with Basque Governament payment service Documentation',
+     u'pymipago',
      u'Mikel Larreategi', 'manual'),
 ]
 
@@ -141,7 +141,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'pymipago',
-     u'Python package to make payment requests with Basque Governament payment service Documentation',
+     u'pymipago',
      [author], 1)
 ]
 
@@ -153,7 +153,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'pymipago',
-     u'Python package to make payment requests with Basque Governament payment service Documentation',
+     u'pymipago',
      author,
      'pymipago',
      'One line description of project.',

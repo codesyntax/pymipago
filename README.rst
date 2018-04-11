@@ -6,21 +6,21 @@ pymipago
 .. image:: https://img.shields.io/pypi/v/pymipago.svg
         :target: https://pypi.python.org/pypi/pymipago
 
-.. image:: https://img.shields.io/travis/erral/pymipago.svg
-        :target: https://travis-ci.org/erral/pymipago
+.. image:: https://img.shields.io/travis/codesyntax/pymipago.svg
+        :target: https://travis-ci.org/codesyntax/pymipago
 
 .. image:: https://readthedocs.org/projects/pymipago/badge/?version=latest
         :target: https://pymipago.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
-.. image:: https://pyup.io/repos/github/erral/pymipago/shield.svg
-     :target: https://pyup.io/repos/github/erral/pymipago/
+.. image:: https://pyup.io/repos/github/codesyntax/pymipago/shield.svg
+     :target: https://pyup.io/repos/github/codesyntax/pymipago/
      :alt: Updates
 
 
 
-Python package to make payment requests with Basque Governament payment service
+Python package to make payment requests with Basque Government's payment service
 
 
 * Free software: GNU General Public License v3

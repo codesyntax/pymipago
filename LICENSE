@@ -1,7 +1,7 @@
 GNU GENERAL PUBLIC LICENSE
                       Version 3, 29 June 2007
 
-    Python package to make payment requests with Basque Governament payment service
+    pymipago
     Copyright (C) 2018  Mikel Larreategi
 
     This program is free software: you can redistribute it and/or modify
