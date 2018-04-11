@@ -10,7 +10,7 @@ def _calculate_payment_identification_notebook_60(limit_date, suffix):
     year_two_digits = str(limit_date.year)[2:]
     year_last_digit = year_two_digits[-1]
     year_ordinal_day = limit_date.timetuple().tm_yday
-    return '{period}{suffix}{year_two_digits}{year_last_digit}{year_ordinal_day}'.format( # noqa
+    return '{period}{suffix:0>3}{year_two_digits}{year_last_digit}{year_ordinal_day:0>3}'.format( # noqa
         period=period,
         suffix=suffix,
         year_two_digits=year_two_digits,
