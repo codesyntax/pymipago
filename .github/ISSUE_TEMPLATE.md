@@ -1,4 +1,4 @@
-* Python package to make payment requests with Basque Governament payment service version:
+* pymipago version:
 * Python version:
 * Operating System:
 
