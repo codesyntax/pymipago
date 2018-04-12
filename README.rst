@@ -9,6 +9,9 @@ pymipago
 .. image:: https://img.shields.io/travis/codesyntax/pymipago.svg
         :target: https://travis-ci.org/codesyntax/pymipago
 
+.. image:: https://coveralls.io/repos/github/codesyntax/pymipago/badge.svg?branch=master
+        :target: https://coveralls.io/github/codesyntax/pymipago?branch=master
+
 .. image:: https://readthedocs.org/projects/pymipago/badge/?version=latest
         :target: https://pymipago.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
