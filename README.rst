@@ -6,7 +6,7 @@ pymipago
 .. image:: https://img.shields.io/pypi/v/pymipago.svg
         :target: https://pypi.python.org/pypi/pymipago
 
-.. image:: https://img.shields.io/travis/codesyntax/pymipago.svg
+.. image:: https://travis-ci.org/codesyntax/pymipago.svg?branch=master
         :target: https://travis-ci.org/codesyntax/pymipago
 
 .. image:: https://coveralls.io/repos/github/codesyntax/pymipago/badge.svg?branch=master
