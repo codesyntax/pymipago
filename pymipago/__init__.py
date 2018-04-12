@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .constants import INITIALIZATION_XML_NOTEBOOK_60
+from .constants import INITIALIZATION_XML
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
@@ -66,7 +66,7 @@ def make_payment_request(
     payment_code = _build_payment_code_notebook_60(
         sender, reference_number, payment_identification, quantity)
 
-    initialization_xml = INITIALIZATION_XML_NOTEBOOK_60.format(
+    initialization_xml = INITIALIZATION_XML.format(
         code=payment_code,
         cpr=cpr,
         suffix=suffix,

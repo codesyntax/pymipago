@@ -10,7 +10,7 @@ PROD_ENVIRON_INITIALIZATION_URL = 'https://www.euskadi.eus/p12gWar/p12gRPCDispat
 
 PROD_ENVIRON_SERVICE_URL = 'https://www.euskadi.eus/p12iWar/p12iRPCDispatcherServlet' # noqa
 
-INITIALIZATION_XML_NOTEBOOK_60 = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
+INITIALIZATION_XML = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
 <rpcCall module="rpcCoreDaemon">
     <function name="doExecInitializePayment">
         <param name="param0" type="XML">
