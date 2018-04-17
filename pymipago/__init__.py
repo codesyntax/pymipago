@@ -96,7 +96,9 @@ def make_payment_request(
             payment_mode=payment_mode_string
         )
 
-        protocol_data = PROTOCOL_DATA_XML.format(return_url=return_url)
+        protocol_data = PROTOCOL_DATA_XML.format(
+            return_url=return_url
+        )
         response = requests.post(
             SERVICE_URL,
             data={
