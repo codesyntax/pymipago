@@ -111,7 +111,7 @@ class TestPymipago(unittest.TestCase):
         sender = '481166'
         format = '521'
         suffix = '002'
-        reference_number = '5555555555'
+        reference_number = '8123456789'
         payment_limit_date = datetime.datetime.now()
         quantity = '1100'
         language = 'eu'
