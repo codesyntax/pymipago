@@ -11,7 +11,7 @@ in order to have the basis to be shown to the end user.
 
 According to the payment platform specs, after the registration, an HTML file is created
 which must be shown to the user. The contents of this HTML file are returned when the method
-is called.
+is called. The method also returns the payment_code that the user should save for further checks.
 
 This HTML file has an "auto-refresh" feature which allows to
 redirect the user to the payment platform, where all the data of the payment is already
