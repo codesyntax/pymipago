@@ -12,6 +12,8 @@ from pymipago.exceptions import InvalidCPRValue
 from pymipago.exceptions import InvalidFormatValue
 from pymipago.exceptions import InvalidReferenceNumber
 
+from six import string_types
+
 
 class TestPymipago(unittest.TestCase):
     """Tests for `pymipago` package."""
@@ -102,3 +104,31 @@ class TestPymipago(unittest.TestCase):
                 language,
                 return_url,
                 payment_modes)
+
+
+    def test_correct_payment_request(self):
+        cpr = '9052180'
+        sender = '481166'
+        format = '521'
+        suffix = '002'
+        reference_number = '5555555555'
+        payment_limit_date = datetime.datetime.now()
+        quantity = '1100'
+        language = 'eu'
+        return_url = 'http://localhost:8000'
+        payment_modes = ['01']
+
+        html, payment_code = make_payment_request(
+                cpr,
+                sender,
+                format,
+                suffix,
+                reference_number,
+                payment_limit_date,
+                quantity,
+                language,
+                return_url,
+                payment_modes)
+
+        self.assertTrue(isinstance(html, string_types))
+        self.assertTrue(isinstance(payment_code, string_types))
