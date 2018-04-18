@@ -108,7 +108,7 @@ def make_payment_request(
             }
         )
 
-        return response.content, payment_code
+        return response.text, registered_payment_id
 
     raise InvalidRegistration(error)
 
