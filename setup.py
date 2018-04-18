@@ -15,7 +15,7 @@ requirements = [ 'requests' ]
 
 setup_requirements = [ ]
 
-test_requirements = [ 'six' ]
+test_requirements = [ ]
 
 setup(
     author="Mikel Larreategi",
