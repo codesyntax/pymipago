@@ -7,12 +7,16 @@ python:
   - 3.4
   - 2.7
 
+env:
+  - DEBUG=True
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis coveralls
+install:
+  - pip install -U coveralls
+  - pip install -e .
 
 # Command to run tests, e.g. python setup.py test
-script: 
-  - tox
+script:
+  - python setup.py test
   - coverage run setup.py test
   - coverage report -m
 

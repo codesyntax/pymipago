@@ -23,9 +23,8 @@ else:
 
 
 def make_payment_request(
-    cpr, sender, format, suffix,
-    reference_number, payment_limit_date, quantity, language, return_url,
-    payment_modes=['01', '02']):
+        cpr, sender, format, suffix, reference_number, payment_limit_date,
+        quantity, language, return_url, payment_modes=['01', '02']):
 
     """This method creates an XML file and creates a payment request on the
        Government platform in order to have the basis to be shown to the end
@@ -76,7 +75,6 @@ def make_payment_request(
         format=format,
         sender=sender,
         reference=reference_number_with_control_digits,
-
     )
 
     response = requests.post(
@@ -108,7 +106,6 @@ def make_payment_request(
             }
         )
 
-        return response.content, payment_code
+        return response.text, registered_payment_id
 
     raise InvalidRegistration(error)
-
