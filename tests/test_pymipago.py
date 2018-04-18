@@ -37,7 +37,6 @@ class TestPymipago(unittest.TestCase):
         return_url = 'http://localhost:8000'
         payment_modes = ['01']
 
-
         with self.assertRaises(InvalidCPRValue):
             make_payment_request(
                 cpr,
@@ -50,7 +49,6 @@ class TestPymipago(unittest.TestCase):
                 language,
                 return_url,
                 payment_modes)
-
 
     def test_invalid_format_raises_exception(self):
         cpr = '9052180'
@@ -77,7 +75,6 @@ class TestPymipago(unittest.TestCase):
                 return_url,
                 payment_modes)
 
-
     def test_invalid_formated_reference_number_raises_exception(self):
         cpr = '9052180'
         sender = '123456'
@@ -102,7 +99,6 @@ class TestPymipago(unittest.TestCase):
                 language,
                 return_url,
                 payment_modes)
-
 
     def test_correct_payment_request(self):
         cpr = '9052180'
