@@ -29,11 +29,8 @@ def _calculate_reference_number_with_control_digits_notebook_60(sender, referenc
 
     division_result = total / 97.0
     _, decimals = str(division_result).split('.')
-    if len(decimals) > 1:
-        first_two_decimals = decimals[:2]
-    else:
-        first_two_decimals = decimals[:1] + '0'
 
+    first_two_decimals = '{:0<2}'.format(decimals)[:2]
     control_digits = 100 - int(first_two_decimals)
 
     return '{reference_number}{control_digits}'.format(
