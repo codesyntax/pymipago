@@ -5,7 +5,8 @@ History
 1.0b3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Previous was an errored relase.
+  [erral]
 
 
 1.0b2 (2018-04-20)
