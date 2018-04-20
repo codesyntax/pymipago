@@ -16,15 +16,6 @@ from pymipago.exceptions import InvalidReferenceNumber
 class TestPymipago(unittest.TestCase):
     """Tests for `pymipago` package."""
 
-    def setUp(self):
-        """Set up test fixtures, if any."""
-        # set debug environment for testing
-        os.environ['DEBUG'] = 'True'
-
-    def tearDown(self):
-        """Tear down test fixtures, if any."""
-        del os.environ['DEBUG']
-
     def test_invalid_cpr_raises_exception(self):
         cpr = '010101'
         sender = '123456'
@@ -48,7 +39,8 @@ class TestPymipago(unittest.TestCase):
                 quantity,
                 language,
                 return_url,
-                payment_modes)
+                payment_modes,
+                test_environment=True)
 
     def test_invalid_format_raises_exception(self):
         cpr = '9052180'
@@ -73,7 +65,8 @@ class TestPymipago(unittest.TestCase):
                 quantity,
                 language,
                 return_url,
-                payment_modes)
+                payment_modes,
+                test_environment=True)
 
     def test_invalid_formated_reference_number_raises_exception(self):
         cpr = '9052180'
@@ -98,7 +91,8 @@ class TestPymipago(unittest.TestCase):
                 quantity,
                 language,
                 return_url,
-                payment_modes)
+                payment_modes,
+                test_environment=True)
 
     def test_correct_payment_request(self):
         cpr = '9052180'
@@ -122,7 +116,8 @@ class TestPymipago(unittest.TestCase):
             quantity,
             language,
             return_url,
-            payment_modes)
+            payment_modes,
+            test_environment=True)
 
         self.assertTrue(html.find(payment_code) != -1)
         self.assertTrue(payment_code.isdigit())
