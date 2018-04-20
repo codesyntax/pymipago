@@ -48,4 +48,4 @@ This method takes some parameters, the explanation of them is the following:
          - '01': offline payment: the user has to download a PDF file and go to a bank to complete the payment
          - '02': online payment: the user is presented a list of online bank platforms to complete the payment
 
-
+    - **test_environment**: (default: False) a boolean to use the testing environment of the Payment Service.
