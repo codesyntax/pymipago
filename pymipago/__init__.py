@@ -10,21 +10,12 @@ from .utils import _calculate_payment_identification_notebook_60
 from .utils import _calculate_reference_number_with_control_digits_notebook_60
 from .utils import _parse_initialization_response
 
-
-import os
 import requests
-
-if os.environ.get('DEBUG', False):
-    from .constants import TEST_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
-    from .constants import TEST_ENVIRON_SERVICE_URL as SERVICE_URL
-else:
-    from .constants import PROD_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
-    from .constants import PROD_ENVIRON_SERVICE_URL as SERVICE_URL
 
 
 def make_payment_request(
         cpr, sender, format, suffix, reference_number, payment_limit_date,
-        quantity, language, return_url, payment_modes=['01', '02']):
+        quantity, language, return_url, payment_modes=['01', '02'], test_environment=False):
 
     """This method creates an XML file and creates a payment request on the
        Government platform in order to have the basis to be shown to the end
@@ -44,6 +35,13 @@ def make_payment_request(
        See the documentation for more information about the parameters
 
     """
+
+    if test_environment:
+        from .constants import TEST_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
+        from .constants import TEST_ENVIRON_SERVICE_URL as SERVICE_URL
+    else:
+        from .constants import PROD_ENVIRON_INITIALIZATION_URL as INITIALIZATION_URL # noqa
+        from .constants import PROD_ENVIRON_SERVICE_URL as SERVICE_URL
 
     if cpr != '9052180':
         raise InvalidCPRValue('We only accept payments with CPR 9052180')
