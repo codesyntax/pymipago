@@ -44,6 +44,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/codesyntax/pymipago',
-    version='1.0b3',
+    version='1.0b4.dev0',
     zip_safe=False,
 )
