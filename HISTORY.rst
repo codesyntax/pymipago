@@ -5,7 +5,8 @@ History
 1.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add a parameter to use the testing environment of the Payment service.
+  [erral]
 
 
 1.0b1 (2018-04-18)
