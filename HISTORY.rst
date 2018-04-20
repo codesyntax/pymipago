@@ -2,7 +2,7 @@
 History
 =======
 
-1.0b3 (unreleased)
+1.0b3 (2018-04-20)
 ------------------
 
 - Previous was an errored relase.
