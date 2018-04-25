@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 from .constants import INITIALIZATION_XML
+from .constants import MESSAGE_1_TEMPLATE
+from .constants import MESSAGE_2_TEMPLATE
+from .constants import MESSAGE_3_TEMPLATE
+from .constants import MESSAGE_4_TEMPLATE
+from .constants import MESSAGE_PAYMENT_TITLE
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
@@ -14,8 +19,8 @@ import requests
 
 
 def make_payment_request(
-        cpr, sender, format, suffix, reference_number, payment_limit_date,
-        quantity, language, return_url, payment_modes=['01', '02'], test_environment=False):
+        cpr, sender, format, suffix, reference_number, payment_limit_date, quantity,
+        language, return_url, payment_modes=['01', '02'], test_environment=False, extra={}):
 
     """This method creates an XML file and creates a payment request on the
        Government platform in order to have the basis to be shown to the end
@@ -63,6 +68,45 @@ def make_payment_request(
     payment_code = _build_payment_code_notebook_60(
         sender, reference_number, payment_identification, quantity)
 
+
+
+    # Message overrides
+
+    message_1 = ''
+    if 'message_1' in extra:
+        message_1 = MESSAGE_1_TEMPLATE.format(
+            es=extra.get('message_1').get('es'),
+            eu=extra.get('message_1').get('eu'),
+        )
+
+    message_2 = ''
+    if 'message_2' in extra:
+        message_2 = MESSAGE_2_TEMPLATE.format(
+            es=extra.get('message_2').get('es'),
+            eu=extra.get('message_2').get('eu'),
+        )
+
+    message_3 = ''
+    if 'message_3' in extra:
+        message_3 = MESSAGE_3_TEMPLATE.format(
+            es=extra.get('message_3').get('es'),
+            eu=extra.get('message_3').get('eu'),
+        )
+
+    message_4 = ''
+    if 'message_4' in extra:
+        message_4 = MESSAGE_4_TEMPLATE.format(
+            es=extra.get('message_4').get('es'),
+            eu=extra.get('message_4').get('eu'),
+        )
+
+    message_payment_title = ''
+    if 'message_payment_title' in extra:
+        message_payment_title = MESSAGE_PAYMENT_TITLE.format(
+            es=extra.get('message_payment_title').get('es'),
+            eu=extra.get('message_payment_title').get('eu'),
+        )
+
     initialization_xml = INITIALIZATION_XML.format(
         code=payment_code,
         cpr=cpr,
@@ -72,7 +116,25 @@ def make_payment_request(
         end_date=payment_limit_date.strftime('%d%m%y'),
         format=format,
         sender=sender,
-        reference=reference_number_with_control_digits,
+        reference_with_control=reference_number_with_control_digits,
+        reference=reference_number,
+        message_1=message_1,
+        message_2=message_2,
+        message_3=message_3,
+        message_4=message_4,
+        message_payment_title=message_payment_title,
+        citizen_name=extra.get('citizen_name', ''),
+        citizen_surname_1=extra.get('citizen_surname_1', ''),
+        citizen_surname_2=extra.get('citizen_surname_2', ''),
+        citizen_nif=extra.get('citizen_nif', ''),
+        citizen_address=extra.get('citizen_address', ''),
+        citizen_postal_code=extra.get('citizen_postal_code', ''),
+        citizen_territory=extra.get('citizen_territory', ''),
+        citizen_country=extra.get('citizen_country', ''),
+        citizen_phone=extra.get('citizen_phone', ''),
+        citizen_email=extra.get('citizen_email', ''),
+        mipago_payment_description_es=extra.get('mipago_payment_description_es', ''),
+        mipago_payment_description_eu=extra.get('mipago_payment_description_eu', ''),
     )
 
     response = requests.post(

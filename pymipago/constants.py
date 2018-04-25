@@ -17,6 +17,65 @@ INITIALIZATION_XML = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
             <paymentRequestData>
                 <peticionesPago>
                     <peticionPago id='0'>
+
+                        <liquidacion>
+
+                            <mensajes>
+                                {message_1}
+
+                                {message_2}
+
+                                {message_3}
+
+                                {message_4}
+
+                            </mensajes>
+
+                        </liquidacion>
+
+                        {message_payment_title}
+
+                        <expediente>
+                            <codigo>{reference}</codigo>
+                            <tercero>
+                                <primerApellido>{citizen_surname_1}</primerApellido>
+                                <segundoApellido>{citizen_surname_2}</segundoApellido>
+                                <razonSocial>{citizen_name}</razonSocial>
+                                <dniNif>{citizen_name}</dniNif>
+                                <calle>{citizen_nif}</calle>
+                                <municipio>{citizen_address}</municipio>
+                                <codigoPostal>{citizen_postal_code}</codigoPostal>
+                                <territorio>{citizen_territory}</territorio>
+                                <pais>{citizen_country}</pais>
+                                <datosAdicionales>
+                                    <datoAdicional id="telefono">
+                                        <valor>{citizen_phone}</valor>
+                                    </datoAdicional>
+                                    <datoAdicional id="email">
+                                        <valor>{citizen_email}</valor>
+                                    </datoAdicional>
+
+                                </datosAdicionales>
+                            </tercero>
+                        </expediente>
+
+                        <conceptos>
+                            <conceptoPeticion>
+                                <numeroLinea>1</numeroLinea>
+                                <baseImponible>0</baseImponible>
+                                <descripcion>
+                                    <eu>{mipago_payment_description_eu}</eu>
+                                    <es>{mipago_payment_description_es}</es>
+                                </descripcion>
+                                <unidades>1</unidades>
+                                <tieneIVARepercutido>false</tieneIVARepercutido>
+                                <IVARepercutido>false</IVARepercutido>
+                                <tipoIVA>0</tipoIVA>
+                                <importe>{quantity}</importe>
+                                <importeIVA>0</importeIVA>
+                            </conceptoPeticion>
+                        </conceptos>
+
                         <datosPago>
 
                             <codigo>{code}</codigo>
@@ -34,7 +93,7 @@ INITIALIZATION_XML = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
                             <formato>{format}</formato>
                             <emisor>{sender}</emisor>
                             <validar>1</validar>
-                            <referencia>{reference}</referencia>
+                            <referencia>{reference_with_control}</referencia>
 
                         </datosPago>
                     </peticionPago>
@@ -59,3 +118,35 @@ PROTOCOL_DATA_XML = '''<protocolData>
     </urls>
 </protocolData>
 '''
+MESSAGE_PAYMENT_TITLE = '''<descripcion>
+    <eu>{eu}</eu>
+    <es>{es}</es>
+</descripcion>'''
+
+MESSAGE_1_TEMPLATE = """<mensaje id="1">
+    <texto>
+        <eu>{eu}</eu>
+        <es>{es}</es>
+    </texto>
+</mensaje>"""
+
+MESSAGE_2_TEMPLATE = """<mensaje id="2">
+    <texto>
+        <eu>{eu}</eu>
+        <es>{es}</es>
+    </texto>
+</mensaje>"""
+
+MESSAGE_3_TEMPLATE = """<mensaje id="3">
+    <texto>
+        <eu>{eu}</eu>
+        <es>{es}</es>
+    </texto>
+</mensaje>"""
+
+MESSAGE_4_TEMPLATE = """<mensaje id="4">
+    <texto>
+        <eu>{eu}</eu>
+        <es>{es}</es>
+    </texto>
+</mensaje>"""
