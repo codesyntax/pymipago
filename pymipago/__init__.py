@@ -126,6 +126,7 @@ def make_payment_request(
         citizen_name=extra.get('citizen_name', ''),
         citizen_surname_1=extra.get('citizen_surname_1', ''),
         citizen_surname_2=extra.get('citizen_surname_2', ''),
+        citizen_city=extra.get('citizen_city', ''),
         citizen_nif=extra.get('citizen_nif', ''),
         citizen_address=extra.get('citizen_address', ''),
         citizen_postal_code=extra.get('citizen_postal_code', ''),
