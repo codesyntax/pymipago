@@ -5,6 +5,7 @@ from .constants import MESSAGE_2_TEMPLATE
 from .constants import MESSAGE_3_TEMPLATE
 from .constants import MESSAGE_4_TEMPLATE
 from .constants import MESSAGE_PAYMENT_TITLE
+from .constants import MESSAGE_PAYMENT_DESCRIPTION
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
@@ -69,7 +70,6 @@ def make_payment_request(
         sender, reference_number, payment_identification, quantity)
 
 
-
     # Message overrides
 
     message_1 = ''
@@ -107,6 +107,13 @@ def make_payment_request(
             eu=extra.get('message_payment_title').get('eu'),
         )
 
+    mipago_payment_description = ''
+    if 'mipago_payment_description' in extra:
+        mipago_payment_description = MESSAGE_PAYMENT_DESCRIPTION.format(
+            es=extra.get('mipago_payment_description').get('es'),
+            eu=extra.get('mipago_payment_description').get('eu'),
+        )
+
     initialization_xml = INITIALIZATION_XML.format(
         code=payment_code,
         cpr=cpr,
@@ -123,6 +130,7 @@ def make_payment_request(
         message_3=message_3,
         message_4=message_4,
         message_payment_title=message_payment_title,
+        mipago_payment_description=mipago_payment_description,
         citizen_name=extra.get('citizen_name', ''),
         citizen_surname_1=extra.get('citizen_surname_1', ''),
         citizen_surname_2=extra.get('citizen_surname_2', ''),
@@ -134,8 +142,6 @@ def make_payment_request(
         citizen_country=extra.get('citizen_country', ''),
         citizen_phone=extra.get('citizen_phone', ''),
         citizen_email=extra.get('citizen_email', ''),
-        mipago_payment_description_es=extra.get('mipago_payment_description_es', ''),
-        mipago_payment_description_eu=extra.get('mipago_payment_description_eu', ''),
     )
 
     response = requests.post(
