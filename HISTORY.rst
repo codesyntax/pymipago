@@ -5,7 +5,8 @@ History
 1.0b4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add an extra parameter to register additional optional information into the payment service
+  [erral] 
 
 
 1.0b3 (2018-04-20)
