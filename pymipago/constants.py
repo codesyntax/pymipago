@@ -41,9 +41,9 @@ INITIALIZATION_XML = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
                                 <primerApellido>{citizen_surname_1}</primerApellido>
                                 <segundoApellido>{citizen_surname_2}</segundoApellido>
                                 <razonSocial>{citizen_name}</razonSocial>
-                                <dniNif>{citizen_name}</dniNif>
-                                <calle>{citizen_nif}</calle>
-                                <municipio>{citizen_address}</municipio>
+                                <dniNif>{citizen_nif}</dniNif>
+                                <calle>{citizen_address}</calle>
+                                <municipio>{citizen_city}</municipio>
                                 <codigoPostal>{citizen_postal_code}</codigoPostal>
                                 <territorio>{citizen_territory}</territorio>
                                 <pais>{citizen_country}</pais>
