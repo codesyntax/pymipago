@@ -49,3 +49,38 @@ This method takes some parameters, the explanation of them is the following:
          - '02': online payment: the user is presented a list of online bank platforms to complete the payment
 
     - **test_environment**: (default: False) a boolean to use the testing environment of the Payment Service.
+
+    - **extra**: (default: {}): a dict to override default values of the payment service configuration. Currently supported values are the following:
+        - 'message1': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the footer value of the payment document in PDF format
+
+        - 'message2': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the first legal text of the payment document in PDF format
+
+        - 'message3': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the second legal text of the payment document in PDF format
+
+        - 'message4': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the header text of the payment document in PDF format
+
+        - 'message_payment_title': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish text to override the name of the payment .
+
+        - 'message_payment_description': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish text to show the concept of the payment.
+
+        - 'citizen_name': text to show citizen's citizen_name in the payment document.
+
+        - 'citizen_surname_1': text to show citizen's citizen_surname_1 in the payment document.
+
+        - 'citizen_surname_2': text to show citizen's citizen_surname_2 in the payment document.
+
+        - 'citizen_nif': text to show citizen's citizen_nif in the payment document.
+
+        - 'citizen_address': text to show citizen's citizen_address in the payment document.
+
+        - 'citizen_postal_code': text to show citizen's citizen_postal_code in the payment document.
+
+        - 'citizen_territory': text to show citizen's citizen_territory in the payment document.
+
+        - 'citizen_country': text to show citizen's citizen_country in the payment document.
+
+        - 'citizen_phone': text to show citizen's citizen_phone in the payment document.
+
+        - 'citizen_email': text to show citizen's citizen_email in the payment document.
+
+

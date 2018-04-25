@@ -5,6 +5,7 @@ from .constants import MESSAGE_2_TEMPLATE
 from .constants import MESSAGE_3_TEMPLATE
 from .constants import MESSAGE_4_TEMPLATE
 from .constants import MESSAGE_PAYMENT_TITLE
+from .constants import MESSAGE_PAYMENT_DESCRIPTION
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
@@ -69,42 +70,48 @@ def make_payment_request(
         sender, reference_number, payment_identification, quantity)
 
 
-
     # Message overrides
 
     message_1 = ''
     if 'message_1' in extra:
         message_1 = MESSAGE_1_TEMPLATE.format(
-            es=extra.get('message_1').get('es'),
-            eu=extra.get('message_1').get('eu'),
+            es=extra.get('message_1').get('es', ''),
+            eu=extra.get('message_1').get('eu', ''),
         )
 
     message_2 = ''
     if 'message_2' in extra:
         message_2 = MESSAGE_2_TEMPLATE.format(
-            es=extra.get('message_2').get('es'),
-            eu=extra.get('message_2').get('eu'),
+            es=extra.get('message_2').get('es', ''),
+            eu=extra.get('message_2').get('eu', ''),
         )
 
     message_3 = ''
     if 'message_3' in extra:
         message_3 = MESSAGE_3_TEMPLATE.format(
-            es=extra.get('message_3').get('es'),
-            eu=extra.get('message_3').get('eu'),
+            es=extra.get('message_3').get('es', ''),
+            eu=extra.get('message_3').get('eu', ''),
         )
 
     message_4 = ''
     if 'message_4' in extra:
         message_4 = MESSAGE_4_TEMPLATE.format(
-            es=extra.get('message_4').get('es'),
-            eu=extra.get('message_4').get('eu'),
+            es=extra.get('message_4').get('es', ''),
+            eu=extra.get('message_4').get('eu', ''),
         )
 
     message_payment_title = ''
     if 'message_payment_title' in extra:
         message_payment_title = MESSAGE_PAYMENT_TITLE.format(
-            es=extra.get('message_payment_title').get('es'),
-            eu=extra.get('message_payment_title').get('eu'),
+            es=extra.get('message_payment_title').get('es', ''),
+            eu=extra.get('message_payment_title').get('eu', ''),
+        )
+
+    mipago_payment_description = ''
+    if 'mipago_payment_description' in extra:
+        mipago_payment_description = MESSAGE_PAYMENT_DESCRIPTION.format(
+            es=extra.get('mipago_payment_description').get('es', ''),
+            eu=extra.get('mipago_payment_description').get('eu', ''),
         )
 
     initialization_xml = INITIALIZATION_XML.format(
@@ -123,9 +130,11 @@ def make_payment_request(
         message_3=message_3,
         message_4=message_4,
         message_payment_title=message_payment_title,
+        mipago_payment_description=mipago_payment_description,
         citizen_name=extra.get('citizen_name', ''),
         citizen_surname_1=extra.get('citizen_surname_1', ''),
         citizen_surname_2=extra.get('citizen_surname_2', ''),
+        citizen_city=extra.get('citizen_city', ''),
         citizen_nif=extra.get('citizen_nif', ''),
         citizen_address=extra.get('citizen_address', ''),
         citizen_postal_code=extra.get('citizen_postal_code', ''),
@@ -133,8 +142,6 @@ def make_payment_request(
         citizen_country=extra.get('citizen_country', ''),
         citizen_phone=extra.get('citizen_phone', ''),
         citizen_email=extra.get('citizen_email', ''),
-        mipago_payment_description_es=extra.get('mipago_payment_description_es', ''),
-        mipago_payment_description_eu=extra.get('mipago_payment_description_eu', ''),
     )
 
     response = requests.post(
