@@ -2,7 +2,7 @@
 History
 =======
 
-1.0b4 (unreleased)
+1.0b4 (2018-04-25)
 ------------------
 
 - Add an extra parameter to register additional optional information into the payment service
