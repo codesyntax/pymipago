@@ -75,43 +75,43 @@ def make_payment_request(
     message_1 = ''
     if 'message_1' in extra:
         message_1 = MESSAGE_1_TEMPLATE.format(
-            es=extra.get('message_1').get('es'),
-            eu=extra.get('message_1').get('eu'),
+            es=extra.get('message_1').get('es', ''),
+            eu=extra.get('message_1').get('eu', ''),
         )
 
     message_2 = ''
     if 'message_2' in extra:
         message_2 = MESSAGE_2_TEMPLATE.format(
-            es=extra.get('message_2').get('es'),
-            eu=extra.get('message_2').get('eu'),
+            es=extra.get('message_2').get('es', ''),
+            eu=extra.get('message_2').get('eu', ''),
         )
 
     message_3 = ''
     if 'message_3' in extra:
         message_3 = MESSAGE_3_TEMPLATE.format(
-            es=extra.get('message_3').get('es'),
-            eu=extra.get('message_3').get('eu'),
+            es=extra.get('message_3').get('es', ''),
+            eu=extra.get('message_3').get('eu', ''),
         )
 
     message_4 = ''
     if 'message_4' in extra:
         message_4 = MESSAGE_4_TEMPLATE.format(
-            es=extra.get('message_4').get('es'),
-            eu=extra.get('message_4').get('eu'),
+            es=extra.get('message_4').get('es', ''),
+            eu=extra.get('message_4').get('eu', ''),
         )
 
     message_payment_title = ''
     if 'message_payment_title' in extra:
         message_payment_title = MESSAGE_PAYMENT_TITLE.format(
-            es=extra.get('message_payment_title').get('es'),
-            eu=extra.get('message_payment_title').get('eu'),
+            es=extra.get('message_payment_title').get('es', ''),
+            eu=extra.get('message_payment_title').get('eu', ''),
         )
 
     mipago_payment_description = ''
     if 'mipago_payment_description' in extra:
         mipago_payment_description = MESSAGE_PAYMENT_DESCRIPTION.format(
-            es=extra.get('mipago_payment_description').get('es'),
-            eu=extra.get('mipago_payment_description').get('eu'),
+            es=extra.get('mipago_payment_description').get('es', ''),
+            eu=extra.get('mipago_payment_description').get('eu', ''),
         )
 
     initialization_xml = INITIALIZATION_XML.format(
