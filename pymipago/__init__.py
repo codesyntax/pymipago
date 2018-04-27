@@ -172,9 +172,6 @@ def make_payment_request(
         pdf_xslt_url=pdf_xslt_url,
     )
 
-    with open('/tmp/send.xml', 'w') as fp:
-        fp.write(initialization_xml)
-
     response = requests.post(
         INITIALIZATION_URL,
         data={'xmlRPC': initialization_xml}
