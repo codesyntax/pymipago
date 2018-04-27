@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 from .constants import INITIALIZATION_XML
+from .constants import LOGO_1_TEMPLATE
+from .constants import LOGO_2_TEMPLATE
+from .constants import LOGO_WRAPPER_TEMPLATE
 from .constants import MESSAGE_1_TEMPLATE
 from .constants import MESSAGE_2_TEMPLATE
 from .constants import MESSAGE_3_TEMPLATE
 from .constants import MESSAGE_4_TEMPLATE
-from .constants import MESSAGE_PAYMENT_TITLE
 from .constants import MESSAGE_PAYMENT_DESCRIPTION
+from .constants import MESSAGE_PAYMENT_TITLE
+from .constants import PDF_XSLT_TEMPLATE
 from .constants import PRESENTATION_XML
 from .constants import PROTOCOL_DATA_XML
 from .exceptions import InvalidCPRValue
@@ -114,6 +118,28 @@ def make_payment_request(
             eu=extra.get('mipago_payment_description').get('eu', ''),
         )
 
+    logo_urls = ''
+    if 'logo_1_url' in extra:
+        logo_urls += LOGO_1_TEMPLATE.format(
+            url=extra.get('logo_1_url', '')
+        )
+
+    if 'logo_2_url' in extra:
+        logo_urls += LOGO_2_TEMPLATE.format(
+            url=extra.get('logo_2_url', '')
+        )
+
+    if logo_urls:
+        logo_urls = LOGO_WRAPPER_TEMPLATE.format(
+            data=logo_urls,
+        )
+
+    pdf_xslt_url = ''
+    if 'pdf_xslt_url' in extra:
+        pdf_xslt_url = PDF_XSLT_TEMPLATE.format(
+            url=extra.get('pdf_xslt_url', '')
+        )
+
     initialization_xml = INITIALIZATION_XML.format(
         code=payment_code,
         cpr=cpr,
@@ -142,7 +168,12 @@ def make_payment_request(
         citizen_country=extra.get('citizen_country', ''),
         citizen_phone=extra.get('citizen_phone', ''),
         citizen_email=extra.get('citizen_email', ''),
+        logo_urls=logo_urls,
+        pdf_xslt_url=pdf_xslt_url,
     )
+
+    with open('/tmp/send.xml', 'w') as fp:
+        fp.write(initialization_xml)
 
     response = requests.post(
         INITIALIZATION_URL,
