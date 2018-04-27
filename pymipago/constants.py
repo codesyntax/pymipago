@@ -31,6 +31,11 @@ INITIALIZATION_XML = '''<?xml version="1.0" encoding="ISO-8859-1" ?>
 
                             </mensajes>
 
+                            {logo_urls}
+
+                            {pdf_xslt_url}
+
+                            <paymentGatewayVersion>3</paymentGatewayVersion>
                         </liquidacion>
 
                         {message_payment_title}
@@ -154,3 +159,20 @@ MESSAGE_4_TEMPLATE = """<mensaje id="4">
         <es>{es}</es>
     </texto>
 </mensaje>"""
+
+LOGO_1_TEMPLATE = """<imagen id="logo1">
+        <url><![CDATA[{url}]]></url>
+</imagen>"""
+
+
+LOGO_2_TEMPLATE = """<imagen id="logo2">
+        <url><![CDATA[{url}]]></url>
+</imagen>"""
+
+LOGO_WRAPPER_TEMPLATE = """<imagenes>
+    {data}
+</imagenes>"""
+
+PDF_XSLT_TEMPLATE = """<urlPlantilla>
+    <![CDATA[{url}]]>
+</urlPlantilla>"""

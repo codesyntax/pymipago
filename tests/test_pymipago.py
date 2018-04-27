@@ -94,7 +94,7 @@ class TestPymipago(unittest.TestCase):
                 payment_modes,
                 test_environment=True)
 
-    def test_correct_payment_request(self):
+    def test_correct_payment_request_with_minimal_options(self):
         cpr = '9052180'
         sender = '481166'
         format = '521'
@@ -117,6 +117,65 @@ class TestPymipago(unittest.TestCase):
             language,
             return_url,
             payment_modes,
+            test_environment=True)
+
+        self.assertTrue(html.find(payment_code) != -1)
+        self.assertTrue(payment_code.isdigit())
+
+    def test_correct_payment_request_with_full_options(self):
+        cpr = '9052180'
+        sender = '481166'
+        format = '521'
+        suffix = '002'
+        reference_number = '8123456789'
+        payment_limit_date = datetime.datetime.now()
+        quantity = '1100'
+        language = 'eu'
+        return_url = 'http://localhost:8000'
+        payment_modes = ['01']
+
+        extra = {
+            'message_1': {
+                'eu': 'Message: message_1 in Basque (eu)',
+                'es': 'Message: message_1 in Spanish (es)'
+            },
+            'message_2': {
+                'eu': 'Message: message_2 in Basque (eu)',
+                'es': 'Message: message_2 in Spanish (es)'
+            },
+            'message_3': {
+                'eu': 'Message: message_3 in Basque (eu)',
+                'es': 'Message: message_3 in Spanish (es)'
+            },
+            'message_4': {
+                'eu': 'Message: message_4 in Basque (eu)',
+                'es': 'Message: message_4 in Spanish (es)'
+            },
+            'message_payment_title': {
+                'eu': 'Message: message_payment_title in Basque (eu)',
+                'es': 'Message: message_payment_title in Spanish (es)'
+            },
+            'mipago_payment_description': {
+                'eu': 'Message: mipago_payment_description in Basque (eu)',
+                'es': 'Message: mipago_payment_description in Spanish (es)'
+            },
+            'logo_1_url': '/data/this-is-a-demo-url-of-logo_1_url.gif',
+            'logo_2_url': '/data/this-is-a-demo-url-of-logo_2_url.gif',
+            'pdf_xslt_url': '/data/this-is-a-demo-url-of-pdf_xslt_url.xsl',
+        }
+
+        html, payment_code = make_payment_request(
+            cpr,
+            sender,
+            format,
+            suffix,
+            reference_number,
+            payment_limit_date,
+            quantity,
+            language,
+            return_url,
+            payment_modes,
+            extra=extra,
             test_environment=True)
 
         self.assertTrue(html.find(payment_code) != -1)

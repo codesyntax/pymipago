@@ -5,7 +5,12 @@ History
 1.0b5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add extra parameters to send logo urls
+  [erral]
+
+
+- Add an extra parameter to send the XSLT template
+  [erral]
 
 
 1.0b4 (2018-04-25)
