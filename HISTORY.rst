@@ -2,7 +2,7 @@
 History
 =======
 
-1.0b5 (unreleased)
+1.0b5 (2018-04-27)
 ------------------
 
 - Add extra parameters to send logo urls
