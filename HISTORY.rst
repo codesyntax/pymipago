@@ -5,7 +5,8 @@ History
 1.0b6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Document new extra parameters for logos and XSLT template.
+  [erral]
 
 
 1.0b5 (2018-04-27)
