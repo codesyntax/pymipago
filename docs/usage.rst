@@ -50,7 +50,7 @@ This method takes some parameters, the explanation of them is the following:
 
     - **test_environment**: (default: False) a boolean to use the testing environment of the Payment Service.
 
-    - **extra**: (default: {}): a dict to override default values of the payment service configuration. Currently supported values are the following:
+    - **extra**: (default: {}): a dict to override default values of the payment service configuration. Currently supported values are the following (all of them are optional):
         - 'message1': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the footer value of the payment document in PDF format
 
         - 'message2': format: {'eu': 'XX', 'es': 'XX'}: basque and spanish texts to override the first legal text of the payment document in PDF format
@@ -83,4 +83,8 @@ This method takes some parameters, the explanation of them is the following:
 
         - 'citizen_email': text to show citizen's citizen_email in the payment document.
 
+        - 'logo_1_url': url of the 1st logo shown in the payment document. You need to add this logo previously in the Payment Service. Check with them for further assistance.
 
+        - 'logo_2_url': url of the 2nd logo shown in the payment document. You need to add this logo previously in the Payment Service. Check with them for further assistance.
+
+        - 'pdf_xslt_url': url of the XSLT template that will be used to render several templates. Check with the Payment Service for further assistance.
