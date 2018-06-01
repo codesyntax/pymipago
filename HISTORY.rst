@@ -2,7 +2,7 @@
 History
 =======
 
-1.0b6 (unreleased)
+1.0b6 (2018-06-01)
 ------------------
 
 - Fix control digit calculation
