@@ -5,6 +5,9 @@ History
 1.0b6 (unreleased)
 ------------------
 
+- Fix control digit calculation
+  [erral]
+
 - Document new extra parameters for logos and XSLT template.
   [erral]
 
