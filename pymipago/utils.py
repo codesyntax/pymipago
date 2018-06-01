@@ -41,7 +41,7 @@ def _calculate_reference_number_with_control_digits_notebook_60(sender, referenc
         - Divide e by 97 and take the decimal values.
         - f: take the first 2 decimal values (add a 0 as a second digit if
             the division result creates just one decimal)
-        - g: deduct f from 100.
+        - g: deduct f from 99.
         - Concatenate the reference number and g and create a 12 digit value
     """
     if len(reference_number) != 10:
@@ -55,7 +55,7 @@ def _calculate_reference_number_with_control_digits_notebook_60(sender, referenc
     _, decimals = str(division_result).split('.')
 
     first_two_decimals = '{:0<2}'.format(decimals)[:2]
-    control_digits = 100 - int(first_two_decimals)
+    control_digits = 99 - int(first_two_decimals)
 
     return '{reference_number}{control_digits}'.format(
         reference_number=reference_number, control_digits=control_digits)

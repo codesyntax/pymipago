@@ -43,7 +43,7 @@ class TestUtils(unittest.TestCase):
         else:
             first_two_decimals = decimals[:1] + '0'
 
-        control_digits = 100 - int(first_two_decimals)
+        control_digits = 99 - int(first_two_decimals)
         value = '{}{}'.format(reference_number, control_digits)
 
         calculated_value = _calculate_reference_number_with_control_digits_notebook_60(  # noqa
