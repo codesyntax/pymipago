@@ -5,7 +5,11 @@ History
 1.0b7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Test against python 3.7
+  [erral]
+
+- Update dependency versions
+  [erral]
 
 
 1.0b6 (2018-06-01)
