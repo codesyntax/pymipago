@@ -17,7 +17,8 @@ pymipago
         :alt: Documentation Status
 
 
-.. image:: https://img.shields.io/pypi/pyversions/pymipago.svg   :alt: PyPI - Python Version
+.. image:: https://img.shields.io/pypi/pyversions/pymipago.svg   
+        :alt: PyPI - Python Version
      
 .. image:: https://pyup.io/repos/github/codesyntax/pymipago/shield.svg
      :target: https://pyup.io/repos/github/codesyntax/pymipago/
