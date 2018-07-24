@@ -57,7 +57,7 @@ def _calculate_reference_number_with_control_digits_notebook_60(sender, referenc
     first_two_decimals = '{:0<2}'.format(decimals)[:2]
     control_digits = 99 - int(first_two_decimals)
 
-    return '{reference_number}{control_digits}'.format(
+    return '{reference_number}{control_digits:>02}'.format(
         reference_number=reference_number, control_digits=control_digits)
 
 def _build_payment_code_notebook_60(sender, reference_number, payment_identification, quantity): # noqa
