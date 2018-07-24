@@ -5,6 +5,9 @@ History
 1.0b7 (unreleased)
 ------------------
 
+- Force control digits
+  [erral]
+
 - Test against python 3.7
   [erral]
 
