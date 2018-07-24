@@ -50,6 +50,35 @@ class TestUtils(unittest.TestCase):
             sender, reference_number, payment_identification, quantity
         )
         self.assertEqual(value, calculated_value)
+        self.assertEqual(len(calculated_value), 12)
+
+    def test_calculate_reference_number_with_control_digits_notebook_60_leading_zeros(self):
+        sender = '481166'
+        reference_number = '0280724001'
+        payment_identification = '1002188265'
+        quantity = '001'
+
+        sum_value = 0
+        sum_value += int(sender) * 76
+        sum_value += int(reference_number) * 9
+        sum_value += (int(payment_identification) + int(quantity) - 1) * 55
+
+        division = sum_value / 97.0
+        _, decimals = str(division).split('.')
+        if len(decimals) > 1:
+            first_two_decimals = decimals[:2]
+        else:
+            first_two_decimals = decimals[:1] + '0'
+
+        control_digits = 99 - int(first_two_decimals)
+        value = '{}{:>02}'.format(reference_number, control_digits)
+
+        calculated_value = _calculate_reference_number_with_control_digits_notebook_60(  # noqa
+            sender, reference_number, payment_identification, quantity
+        )
+        self.assertEqual(value, calculated_value)
+        self.assertEqual(len(calculated_value), 12)
+
 
     def test_calculate_reference_number_with_invalid_reference_number(self):
         sender = '123456'
