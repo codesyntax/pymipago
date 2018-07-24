@@ -2,7 +2,7 @@
 History
 =======
 
-1.0b7 (unreleased)
+1.0b7 (2018-07-24)
 ------------------
 
 - Force control digits
