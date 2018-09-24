@@ -5,8 +5,8 @@ History
 1.0b8 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Remove bumpversion as dependency
+  [erral]
 
 1.0b7 (2018-07-24)
 ------------------
