@@ -3,11 +3,8 @@ pymipago
 ========
 
 
-.. image:: https://img.shields.io/pypi/v/pymipago.svg
-        :target: https://pypi.python.org/pypi/pymipago
-
-.. image:: https://travis-ci.org/codesyntax/pymipago.svg?branch=master
-        :target: https://travis-ci.org/codesyntax/pymipago
+.. image:: https://travis-ci.com/codesyntax/pymipago.svg?branch=master
+        :target: https://travis-ci.com/codesyntax/pymipago
 
 .. image:: https://coveralls.io/repos/github/codesyntax/pymipago/badge.svg?branch=master
         :target: https://coveralls.io/github/codesyntax/pymipago?branch=master
