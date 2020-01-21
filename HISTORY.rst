@@ -5,6 +5,9 @@ History
 1.0b8 (unreleased)
 ------------------
 
+- Use new Travis CI
+  [erral]
+
 - Remove bumpversion as dependency
   [erral]
 
