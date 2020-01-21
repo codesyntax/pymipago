@@ -2,8 +2,8 @@
 History
 =======
 
-1.0b8 (unreleased)
-------------------
+1.0 (2020-01-21)
+----------------
 
 - Use new Travis CI
   [erral]
